@@ -98,7 +98,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ![n8n Canvas](public/screenshots/workflow-canvas.png)
 
 ### Telegram Output
-![Telegram Message](public/screenshots/telegram-output.png)
+![Telegram Message](public/screenshots/telegram-output.jpg)
 
 ---
 
