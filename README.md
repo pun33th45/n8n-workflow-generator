@@ -91,7 +91,14 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Screenshots
 
-> _Coming soon_
+### Workflow Generator UI
+![Workflow Generator](public/screenshots/generator-ui.png)
+
+### Generated Workflow in n8n
+![n8n Canvas](public/screenshots/workflow-canvas.png)
+
+### Telegram Output
+![Telegram Message](public/screenshots/telegram-output.png)
 
 ---
 
