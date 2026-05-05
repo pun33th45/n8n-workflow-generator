@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# n8n Workflow Generator
 
-## Getting Started
+Generate importable **n8n workflow JSON** from plain English descriptions using Google Gemini AI.
 
-First, run the development server:
+Describe any automation in a single sentence — the app calls Gemini, returns a structured JSON workflow, and lets you copy or download it straight into n8n.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| AI | Google Gemini API (`gemini-flash-latest`) |
+| SDK | `@google/generative-ai` |
+
+---
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/pun33th45/n8n-workflow-generator.git
+cd n8n-workflow-generator
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Add your Gemini API key
+
+Create a `.env.local` file in the project root:
+
+```bash
+GEMINI_API_KEY=your_key_here
+```
+
+Get a free key at [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey).
+
+### 4. Start the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. **Describe your automation** in plain English in the textarea, e.g.:
+   > *"Every morning at 9am, fetch the top 5 Hacker News posts and send them to Telegram"*
 
-To learn more about Next.js, take a look at the following resources:
+2. **Use a preset** — click any of the 6 preset buttons to auto-fill a common workflow pattern.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Click Generate Workflow →** — Gemini builds the JSON and the app validates it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Review the output** — the node preview strip shows each node and its connections. The JSON viewer shows syntax-highlighted output.
 
-## Deploy on Vercel
+5. **Copy or Download** — use the Copy JSON button or Download JSON button to get the file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Import into n8n** — in n8n, go to **Add Workflow → Import from JSON**, paste or upload the file, add your credentials to each node, and run.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Project Structure
+
+```
+├── app/
+│   ├── page.tsx                 # Main UI
+│   ├── layout.tsx               # Root layout + fonts
+│   └── api/generate/route.ts   # POST /api/generate → Gemini
+├── components/
+│   ├── WorkflowForm.tsx         # Textarea + presets + button
+│   ├── JsonViewer.tsx           # Syntax-highlighted JSON output
+│   └── NodePreview.tsx          # Node pill strip
+├── lib/
+│   ├── prompt.ts                # System prompt for Gemini
+│   └── n8n-types.ts             # TypeScript types for n8n schema
+└── .env.local                   # Your API key (not committed)
+```
+
+---
+
+## Screenshots
+
+> _Coming soon_
+
+---
+
+## License
+
+MIT
