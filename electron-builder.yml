@@ -1,0 +1,50 @@
+appId: com.puneeth.n8n-workflow-generator
+productName: n8n Workflow Generator
+copyright: Copyright © 2024
+
+directories:
+  output: release
+
+# Include built artifacts + node_modules (electron-builder auto-prunes to production deps only)
+files:
+  - dist-electron/**/*
+  - out/**/*
+  - node_modules/**/*
+  - package.json
+  - "!electron/**/*"
+  - "!app/**/*"
+  - "!components/**/*"
+  - "!lib/**/*"
+  - "!scripts/**/*"
+  - "!public/**/*"
+  - "!**/*.ts"
+  - "!**/*.tsx"
+  - "!**/*.md"
+  - "!node_modules/next/**/*"
+  - "!node_modules/react/**/*"
+  - "!node_modules/react-dom/**/*"
+  - "!node_modules/electron/**/*"
+  - "!node_modules/electron-builder/**/*"
+  - "!node_modules/typescript/**/*"
+  - "!node_modules/tailwindcss/**/*"
+  - "!node_modules/esbuild/**/*"
+  - "!node_modules/concurrently/**/*"
+  - "!node_modules/wait-on/**/*"
+
+asar: false
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  # Place your 256x256 icon at build/icon.ico to use a custom icon
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: n8n Workflow Generator
+
+publish: null
